@@ -9,24 +9,11 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { Link } from "react-router-dom"
 
 const steps = ["Rellenar datos", "Adjuntar archivos"];
 
@@ -121,7 +108,9 @@ export default function Checkout() {
                     mt: 3,
                   }}
                 >
+                  <Link to="/status">
                   <Button variant="contained">Ir a Inicio</Button>
+                  </Link>
                 </Box>
               </React.Fragment>
             ) : (
@@ -148,7 +137,6 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <Copyright />
       </Container>
     </ThemeProvider>
   );

@@ -1,14 +1,16 @@
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Navigate, Link } from "react-router-dom";
+import { AppBar, Toolbar } from "@mui/material";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HourglassFullIcon from '@mui/icons-material/HourglassFull';
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -40,7 +42,7 @@ const theme = createTheme({
   },
 });
 
-export default function IniciarSesion() {
+export default function Status() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -52,8 +54,23 @@ export default function IniciarSesion() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
         <CssBaseline />
+      <AppBar
+        position="absolute"
+        color="primary"
+        elevation={0}
+        sx={{
+          position: "relative",
+          borderBottom: (t) => `1px solid ${t.palette.divider}`,
+        }}
+      >
+        <Toolbar>
+          <Typography variant="h6" color="white" noWrap>
+            Corporación Venezolana de Minería
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container component="main" maxWidth="md">
         <Box
           sx={{
             marginTop: 8,
@@ -63,47 +80,23 @@ export default function IniciarSesion() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+            <HourglassFullIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Registro de Alianza
+            Estado de Alianza
           </Typography>
           <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Número de RUM"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <Link to="/preregistro">
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
+            <Typography sx={{mt: 1, textAlign: "justify"}}>
+            Su Estado de Alianza se encuentra en Verificación. Por favor espere a nuevas noticias.
+          </Typography>
+        </Box>
+        <Link to="/">
+        <Button variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              color="secondary"
-            >
-              
-              Iniciar sesión
-            </Button>
-            </Link>
-            <Grid container justifyContent="center" alignItems="center">
-            <Link to="/">
-              <Grid item>
-                  ¿No posee un RUM? Regístrese
-              </Grid>
-            </Link>
-            </Grid>
-          </Box>
+              color="secondary">Salir</Button>
+              </Link>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
